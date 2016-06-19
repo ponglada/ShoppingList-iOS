@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ShoppingListTableViewController: UITableViewController {
+class ShoppingListTableViewController: UITableViewController, UITextFieldDelegate {
 
     var shoppingList: [ShoppingItem]!
+    
+    @IBOutlet weak var AddItemTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +42,21 @@ class ShoppingListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.shoppingList.count
+        return self.shoppingList.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath)
-
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("AddItemCell", forIndexPath: indexPath)
+            return cell
+            
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ShoppingListCell
+        
         // Configure the cell...
-        let shoppingCell = cell as! ShoppingListCell
-        shoppingCell.setItem(self.shoppingList[indexPath.row])
+        cell.setItem(self.shoppingList[indexPath.row - 1])
 
         return cell
     }
@@ -88,6 +96,23 @@ class ShoppingListTableViewController: UITableViewController {
     }
     */
 
+    
+    // MARK: - Text Field Delegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.shoppingList.append(ShoppingItem(name: textField.text!))
+        textField.text = ""
+        self.tableView.reloadData()
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

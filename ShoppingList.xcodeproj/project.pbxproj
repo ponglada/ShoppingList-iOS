@@ -17,6 +17,7 @@
 		E0248AE51D174E2800FBC6F0 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */; };
 		E0248AE71D174E5E00FBC6F0 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AE61D174E5E00FBC6F0 /* ShoppingItem.swift */; };
 		E0248AE91D17534F00FBC6F0 /* ShoppingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AE81D17534F00FBC6F0 /* ShoppingListCell.swift */; };
+		E0248AEB1D17587900FBC6F0 /* AddShoppingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AEA1D17587900FBC6F0 /* AddShoppingItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
 		E0248AE61D174E5E00FBC6F0 /* ShoppingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		E0248AE81D17534F00FBC6F0 /* ShoppingListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListCell.swift; sourceTree = "<group>"; };
+		E0248AEA1D17587900FBC6F0 /* AddShoppingItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShoppingItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */,
 				E0248AE61D174E5E00FBC6F0 /* ShoppingItem.swift */,
 				E0248AE81D17534F00FBC6F0 /* ShoppingListCell.swift */,
+				E0248AEA1D17587900FBC6F0 /* AddShoppingItemCell.swift */,
 			);
 			path = ShoppingList;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0248AC71D174B1600FBC6F0 /* SecondViewController.swift in Sources */,
+				E0248AEB1D17587900FBC6F0 /* AddShoppingItemCell.swift in Sources */,
 				E0248AC31D174B1600FBC6F0 /* AppDelegate.swift in Sources */,
 				E0248AC51D174B1600FBC6F0 /* FirstViewController.swift in Sources */,
 				E0248AE91D17534F00FBC6F0 /* ShoppingListCell.swift in Sources */,
