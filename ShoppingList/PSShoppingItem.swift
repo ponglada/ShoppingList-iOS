@@ -9,9 +9,28 @@
 import Foundation
 import CoreData
 
+let PSShoppingItemEntityName = "ShoppingItem"
+
 @objc(PSShoppingItem)
 class PSShoppingItem: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+    static func newShoppingItem(name: String, inGroup: PSGroup, save: Bool) -> PSShoppingItem {
+        let moc = PSDataController.sharedInstance.managedObjectContext
+        let item = NSEntityDescription.insertNewObjectForEntityForName(PSShoppingItemEntityName, inManagedObjectContext: moc) as! PSShoppingItem
+        item.group = inGroup
+        item.name = name
+        
+        if save {
+            do {
+                try moc.save()
+            } catch {
+                fatalError("Failed to save context: \(error)")
+            }
+            
+        }
+        
+        return item
+    }
 }

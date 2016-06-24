@@ -19,10 +19,6 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.shoppingList = [ShoppingItem]()
-        //self.shoppingList.append(ShoppingItem(name: "Cabbage"))
-        //self.shoppingList.append(ShoppingItem(name: "Banana"))
-        
         let dc = PSDataController.sharedInstance
         if dc.loadedFromPersistentStore {
             self.shoppingGroup = PSGroup.personalGroup()
@@ -104,19 +100,23 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
 
     
     // MARK: - Text Field Delegate
-    /*
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.shoppingList.append(ShoppingItem(name: textField.text!))
-        textField.text = ""
-        self.tableView.reloadData()
+        let name: String = (textField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))!
+        
+        if name.characters.count > 0 {
+            let item = PSShoppingItem.newShoppingItem(textField.text!, inGroup: self.shoppingGroup, save: true)
+            self.shoppingItems.append(item)
+            textField.text = ""
+            self.tableView.reloadData()
+        }
+        
         return true
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         textField.resignFirstResponder()
     }
-    */
-    
     
     
     /*
