@@ -109,6 +109,9 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
             self.shoppingItems.append(item)
             textField.text = ""
             self.tableView.reloadData()
+        
+        } else {
+            textField.resignFirstResponder()
         }
         
         return true
