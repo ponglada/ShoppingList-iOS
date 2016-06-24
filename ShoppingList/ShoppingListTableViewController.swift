@@ -71,7 +71,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -81,7 +81,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -108,7 +108,10 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
             let item = PSShoppingItem.newShoppingItem(textField.text!, inGroup: self.shoppingGroup, save: true)
             self.shoppingItems.append(item)
             textField.text = ""
-            self.tableView.reloadData()
+            
+            let indexesPath = [NSIndexPath(forRow:self.tableView.numberOfRowsInSection(0), inSection: 0)]
+            self.tableView.insertRowsAtIndexPaths(indexesPath, withRowAnimation: UITableViewRowAnimation.Automatic)
+            
         
         } else {
             textField.resignFirstResponder()
