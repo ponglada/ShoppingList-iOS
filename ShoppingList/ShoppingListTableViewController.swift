@@ -7,25 +7,31 @@
 //
 
 import UIKit
+import CoreData
 
 class ShoppingListTableViewController: UITableViewController, UITextFieldDelegate {
 
-    var shoppingList: [ShoppingItem]!
+    var shoppingItems: [PSShoppingItem]!
+    var shoppingGroup: PSGroup!
     
     @IBOutlet weak var AddItemTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.shoppingList = [ShoppingItem]()
-        self.shoppingList.append(ShoppingItem(name: "Cabbage"))
-        self.shoppingList.append(ShoppingItem(name: "Banana"))
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //self.shoppingList = [ShoppingItem]()
+        //self.shoppingList.append(ShoppingItem(name: "Cabbage"))
+        //self.shoppingList.append(ShoppingItem(name: "Banana"))
+        
+        let dc = PSDataController.sharedInstance
+        if dc.loadedFromPersistentStore {
+            self.shoppingGroup = PSGroup.personalGroup()
+            self.shoppingItems = self.shoppingGroup.shoppingItems?.allObjects as! [PSShoppingItem]
+        } else {
+            self.shoppingItems = []
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShoppingListTableViewController.dataReady), name: PSFinishedLoadingFromPersistentStore, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +48,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.shoppingList.count + 1
+        return self.shoppingItems.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -56,7 +62,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ShoppingListCell
         
         // Configure the cell...
-        cell.setItem(self.shoppingList[indexPath.row - 1])
+        cell.setItem(self.shoppingItems[indexPath.row - 1])
 
         return cell
     }
@@ -98,7 +104,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
 
     
     // MARK: - Text Field Delegate
-    
+    /*
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.shoppingList.append(ShoppingItem(name: textField.text!))
         textField.text = ""
@@ -109,7 +115,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
     func textFieldDidEndEditing(textField: UITextField) {
         textField.resignFirstResponder()
     }
-    
+    */
     
     
     
@@ -122,5 +128,13 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Observer
+    
+    func dataReady() {
+        self.shoppingGroup = PSGroup.personalGroup()
+        self.shoppingItems = self.shoppingGroup.shoppingItems?.allObjects as! [PSShoppingItem]
+        self.tableView.reloadData()
+    }
 
 }

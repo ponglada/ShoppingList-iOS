@@ -10,7 +10,7 @@ import UIKit
 
 class ShoppingListCell: UITableViewCell {
 
-    var shoppingItem: ShoppingItem?
+    var shoppingItem: PSShoppingItem?
     
     @IBOutlet weak var itemLabel: UILabel!
     
@@ -25,7 +25,7 @@ class ShoppingListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setItem(item: ShoppingItem) {
+    func setItem(item: PSShoppingItem) {
         self.shoppingItem = item;
         self.itemLabel.text = item.name
     }
