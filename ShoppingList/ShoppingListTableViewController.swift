@@ -82,6 +82,19 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         }    
     }
     
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let action1 = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Edit", handler: { (action, indexPath) in
+            print("hey")
+        })
+        
+        let action2 = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "Delete", handler: { (action, indexPath) in
+            print("ha")
+        })
+        
+        return [action1, action2]
+        
+    }
+    
 
     /*
     // Override to support rearranging the table view.
@@ -109,7 +122,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
             self.shoppingItems.append(item)
             textField.text = ""
             
-            let indexesPath = [NSIndexPath(forRow:self.tableView.numberOfRowsInSection(0), inSection: 0)]
+            let indexesPath = [NSIndexPath(forRow:self.shoppingItems.count, inSection: 0)]
             self.tableView.insertRowsAtIndexPaths(indexesPath, withRowAnimation: UITableViewRowAnimation.Automatic)
             
         
