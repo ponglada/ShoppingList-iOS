@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ShoppingListTableViewController: UITableViewController, UITextFieldDelegate, SWTableViewCellDelegate {
+class ShoppingListTableViewController: UITableViewController, UITextFieldDelegate, SWTableViewCellDelegate, ShoppinglistCellDelegate {
 
     var shoppingItems: [PSShoppingItem]!
     var shoppingGroup: PSGroup!
@@ -65,6 +65,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         // Configure the cell...
         cell.setItem(self.shoppingItems[indexPath.row - 1])
         cell.delegate = self
+        cell.shoppingCellDelegate = self
 
         return cell
     }
@@ -154,8 +155,9 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         
         switch index {
         case RightButtonsIndex.Edit.rawValue:
+            self.tableView.scrollEnabled = false
+            cell.setEditing(true, animated: true)
             
-            print("Edit")
             
         case RightButtonsIndex.Delete.rawValue:
             
@@ -175,6 +177,25 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         default:
             fatalError("Right Utilitity Button Index out of bound")
         }
+    }
+    
+    func shoppingListCell(cell: ShoppingListCell, didFinishedEditName name: String) {
+        let newText = name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let indexPath = self.tableView.indexPathForCell(cell)
+        let item = self.shoppingItems[(indexPath?.row)! - 1] 
+        
+        if newText != item.name {
+            item.name = newText
+            let moc = PSDataController.sharedInstance.managedObjectContext
+            do {
+                try moc.save()
+            } catch {
+                fatalError("Failed to save context")
+            }
+        }
+        
+        self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
+        self.tableView.scrollEnabled = true
     }
     
     

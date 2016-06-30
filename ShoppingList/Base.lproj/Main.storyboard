@@ -50,6 +50,9 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v10-M4-Vo4">
                                             <rect key="frame" x="8" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="0NS-LU-scr"/>
+                                            </constraints>
                                             <state key="normal" title="O"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Shopping List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjJ-Dv-4Od">
@@ -58,15 +61,24 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="elq-eT-4tY" userLabel="TextField">
+                                            <rect key="frame" x="41" y="12" width="551" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="TjJ-Dv-4Od" firstAttribute="leading" secondItem="v10-M4-Vo4" secondAttribute="trailing" constant="3" id="7tU-gh-q58"/>
-                                        <constraint firstItem="v10-M4-Vo4" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="DRH-39-k2S"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="v10-M4-Vo4" secondAttribute="leading" id="F5I-gA-QIT"/>
-                                        <constraint firstItem="TjJ-Dv-4Od" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="ak0-Ra-OHl"/>
+                                        <constraint firstItem="TjJ-Dv-4Od" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="6fT-CW-VMf"/>
+                                        <constraint firstItem="elq-eT-4tY" firstAttribute="trailing" secondItem="ScX-Vp-ejj" secondAttribute="trailingMargin" id="Hi3-u0-P9u"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="v10-M4-Vo4" secondAttribute="leading" id="P8f-ak-mlv"/>
+                                        <constraint firstItem="elq-eT-4tY" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="as7-Wv-JAb"/>
+                                        <constraint firstItem="v10-M4-Vo4" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="bra-kg-0g8"/>
+                                        <constraint firstItem="elq-eT-4tY" firstAttribute="leading" secondItem="v10-M4-Vo4" secondAttribute="trailing" constant="3" id="rcO-Z5-Vsa"/>
+                                        <constraint firstItem="TjJ-Dv-4Od" firstAttribute="leading" secondItem="v10-M4-Vo4" secondAttribute="trailing" constant="3" id="xuV-sD-5Ca"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="editTextField" destination="elq-eT-4tY" id="BMx-vS-8KY"/>
                                     <outlet property="itemLabel" destination="TjJ-Dv-4Od" id="hJ5-7E-WiR"/>
                                 </connections>
                             </tableViewCell>
