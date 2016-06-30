@@ -9,12 +9,17 @@
 import UIKit
 import CoreData
 
-class ShoppingListTableViewController: UITableViewController, UITextFieldDelegate {
+class ShoppingListTableViewController: UITableViewController, UITextFieldDelegate, SWTableViewCellDelegate {
 
     var shoppingItems: [PSShoppingItem]!
     var shoppingGroup: PSGroup!
     
     @IBOutlet weak var AddItemTextField: UITextField!
+    
+    enum RightButtonsIndex: Int {
+        case Edit = 0, Delete
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +64,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         
         // Configure the cell...
         cell.setItem(self.shoppingItems[indexPath.row - 1])
+        cell.delegate = self
 
         return cell
     }
@@ -73,6 +79,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
 
     
     // Override to support editing the table view.
+    /*
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
@@ -81,7 +88,8 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+ */
+    /*
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let action1 = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Edit", handler: { (action, indexPath) in
             print("hey")
@@ -94,7 +102,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         return [action1, action2]
         
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -135,6 +143,38 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
     
     func textFieldDidEndEditing(textField: UITextField) {
         textField.resignFirstResponder()
+    }
+    
+    
+    // MARK: - SWTableViewCell Delegate
+    
+    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
+        let shoppingCell = cell as? ShoppingListCell
+        let indexPath = self.tableView.indexPathForCell(shoppingCell!)
+        
+        switch index {
+        case RightButtonsIndex.Edit.rawValue:
+            
+            print("Edit")
+            
+        case RightButtonsIndex.Delete.rawValue:
+            
+            self.shoppingItems.removeAtIndex((indexPath?.row)! - 1)
+            
+            let item = shoppingCell?.shoppingItem
+            let moc = PSDataController.sharedInstance.managedObjectContext
+            moc.deleteObject(item!)
+            do {
+                try moc.save()
+            } catch {
+                fatalError("Failed to save context")
+            }
+            
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+        default:
+            fatalError("Right Utilitity Button Index out of bound")
+        }
     }
     
     

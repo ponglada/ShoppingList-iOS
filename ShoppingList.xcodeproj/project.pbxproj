@@ -13,7 +13,6 @@
 		E0248ACF1D174B1600FBC6F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0248ACD1D174B1600FBC6F0 /* LaunchScreen.storyboard */; };
 		E0248ADA1D174B1600FBC6F0 /* ShoppingListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AD91D174B1600FBC6F0 /* ShoppingListUITests.swift */; };
 		E0248AE51D174E2800FBC6F0 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */; };
-		E0248AE71D174E5E00FBC6F0 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AE61D174E5E00FBC6F0 /* ShoppingItem.swift */; };
 		E0248AE91D17534F00FBC6F0 /* ShoppingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AE81D17534F00FBC6F0 /* ShoppingListCell.swift */; };
 		E0248AEB1D17587900FBC6F0 /* AddShoppingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0248AEA1D17587900FBC6F0 /* AddShoppingItemCell.swift */; };
 		E0248AF01D19C17B00FBC6F0 /* MainModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0248AEE1D19C17B00FBC6F0 /* MainModel.xcdatamodeld */; };
@@ -54,7 +53,6 @@
 		E0248AD91D174B1600FBC6F0 /* ShoppingListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListUITests.swift; sourceTree = "<group>"; };
 		E0248ADB1D174B1600FBC6F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
-		E0248AE61D174E5E00FBC6F0 /* ShoppingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		E0248AE81D17534F00FBC6F0 /* ShoppingListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListCell.swift; sourceTree = "<group>"; };
 		E0248AEA1D17587900FBC6F0 /* AddShoppingItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShoppingItemCell.swift; sourceTree = "<group>"; };
 		E0248AEF1D19C17B00FBC6F0 /* MainModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainModel.xcdatamodel; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				E0248ACB1D174B1600FBC6F0 /* Assets.xcassets */,
 				E0248AD01D174B1600FBC6F0 /* Info.plist */,
 				E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */,
-				E0248AE61D174E5E00FBC6F0 /* ShoppingItem.swift */,
 				E0248AEE1D19C17B00FBC6F0 /* MainModel.xcdatamodeld */,
 				E0248AEC1D19C10000FBC6F0 /* View */,
 				E0248AED1D19C12900FBC6F0 /* Model */,
@@ -299,7 +296,6 @@
 				E0248AF21D19EED500FBC6F0 /* PSDataController.swift in Sources */,
 				E0248AE91D17534F00FBC6F0 /* ShoppingListCell.swift in Sources */,
 				E0F2BEBC1D1DF3DF00B5E7C2 /* SWLongPressGestureRecognizer.m in Sources */,
-				E0248AE71D174E5E00FBC6F0 /* ShoppingItem.swift in Sources */,
 				E0F2BEBD1D1DF3DF00B5E7C2 /* SWTableViewCell.m in Sources */,
 				E0248B091D1A06EA00FBC6F0 /* PSGroup+CoreDataProperties.swift in Sources */,
 				E0248B031D1A06BF00FBC6F0 /* PSUser+CoreDataProperties.swift in Sources */,

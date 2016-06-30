@@ -41,7 +41,7 @@
                                     <outlet property="addTextField" destination="BEm-Is-AIB" id="IHF-tV-gvt"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="HJy-PU-106" customClass="ShoppingListCell" customModule="ShoppingList" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCell" id="HJy-PU-106" customClass="ShoppingListCell" customModule="ShoppingList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HJy-PU-106" id="ScX-Vp-ejj">
@@ -58,18 +58,12 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hb1-H2-hwO">
-                                            <rect key="frame" x="549" y="7" width="30" height="30"/>
-                                            <state key="normal" title="Edit"/>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="TjJ-Dv-4Od" firstAttribute="leading" secondItem="v10-M4-Vo4" secondAttribute="trailing" constant="3" id="7tU-gh-q58"/>
                                         <constraint firstItem="v10-M4-Vo4" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="DRH-39-k2S"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="v10-M4-Vo4" secondAttribute="leading" id="F5I-gA-QIT"/>
-                                        <constraint firstItem="hb1-H2-hwO" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="Kog-jS-Ejn"/>
                                         <constraint firstItem="TjJ-Dv-4Od" firstAttribute="centerY" secondItem="ScX-Vp-ejj" secondAttribute="centerY" id="ak0-Ra-OHl"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="hb1-H2-hwO" secondAttribute="trailing" constant="13" id="sKP-1F-150"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
