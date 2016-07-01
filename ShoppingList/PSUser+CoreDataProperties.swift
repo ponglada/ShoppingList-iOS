@@ -16,7 +16,7 @@ extension PSUser {
 
     @NSManaged var name: String?
     @NSManaged var email: String?
-    @NSManaged var groups: NSSet?
+    @NSManaged var sheets: NSSet?
     @NSManaged var ownedGroups: NSSet?
 
 }

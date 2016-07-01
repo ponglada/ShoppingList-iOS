@@ -16,6 +16,6 @@ extension PSShoppingItem {
 
     @NSManaged var name: String?
     @NSManaged var purchased: NSNumber?
-    @NSManaged var group: PSGroup?
+    @NSManaged var sheet: PSSheet?
 
 }

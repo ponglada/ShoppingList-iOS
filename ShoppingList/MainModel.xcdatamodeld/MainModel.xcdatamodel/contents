@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
-    <entity name="Group" representedClassName=".PSGroup" syncable="YES">
-        <attribute name="enabled" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isPersonal" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="groups" inverseEntity="User" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedGroups" inverseEntity="User" syncable="YES"/>
-        <relationship name="shoppingItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ShoppingItem" inverseName="group" inverseEntity="ShoppingItem" syncable="YES"/>
+    <entity name="Sheet" representedClassName=".PSSheet" syncable="YES">
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="sheets" inverseEntity="User" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedSheet" inverseEntity="User" syncable="YES"/>
+        <relationship name="shoppingItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShoppingItem" inverseName="sheet" inverseEntity="ShoppingItem" syncable="YES"/>
     </entity>
     <entity name="ShoppingItem" representedClassName="PSShoppingItem" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="purchased" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="shoppingItems" inverseEntity="Group" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="sheet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sheet" inverseName="shoppingItems" inverseEntity="Sheet" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName=".PSUser" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="members" inverseEntity="Group" syncable="YES"/>
-        <relationship name="ownedGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="owner" inverseEntity="Group" syncable="YES"/>
+        <relationship name="ownedSheet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sheet" inverseName="owner" inverseEntity="Sheet" syncable="YES"/>
+        <relationship name="sheets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sheet" inverseName="members" inverseEntity="Sheet" syncable="YES"/>
         <fetchedProperty name="personalGroup" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="User" predicateString="isPersonal == 1"/>
         </fetchedProperty>
     </entity>
     <elements>
-        <element name="ShoppingItem" positionX="-56" positionY="108" width="128" height="90"/>
-        <element name="Group" positionX="-297" positionY="27" width="128" height="133"/>
+        <element name="ShoppingItem" positionX="-56" positionY="108" width="128" height="133"/>
         <element name="User" positionX="-54" positionY="-89" width="128" height="131"/>
+        <element name="Sheet" positionX="-288" positionY="27" width="128" height="120"/>
     </elements>
 </model>

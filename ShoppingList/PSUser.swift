@@ -32,34 +32,6 @@ class PSUser: NSManagedObject {
         
         return user
     }
-    
-    static func currentUser() -> PSUser {
-        if let cu = cUser {
-            return cu
-        }
-        
-        let email = NSUserDefaults.standardUserDefaults().objectForKey(PSUserDefaultsCurrentUserKey) as! String
-        let moc = PSDataController.sharedInstance.managedObjectContext
-        let request = NSFetchRequest(entityName: PSUserEntityName)
-        request.predicate = NSPredicate(format: "email = %@", email)
-        
-        var users: [PSUser]
-        do {
-            try users = moc.executeFetchRequest(request) as! [PSUser]
-        } catch {
-            fatalError("Failed to fetch current user: \(error)")
-        }
-        
-        return users[0]
-    }
-    
-    func personalGroup() -> PSGroup? {
-        let predicate = NSPredicate(format: "isPersonal = %@", true)
-        let pGroups = self.groups?.filteredSetUsingPredicate(predicate)
-        if pGroups?.count > 0 {
-            return pGroups?.first as? PSGroup
-        }
-        return nil
-    }
+
 
 }

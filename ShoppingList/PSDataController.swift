@@ -12,11 +12,14 @@ import CoreData
 let PSFinishedLoadingFromPersistentStore = "Finish loading from persistent Store"
 let PSUserDefaultsNotFirstTimeKey = "PS Not First Time Key"
 let PSUserDefaultsCurrentUserKey = "PS Current User Key"
+let PSUserDefaultsCurrentSheetKey = "PS Current Sheet Key"
 
 
 class PSDataController: NSObject {
     
     static let sharedInstance = PSDataController()
+    var currentUser: PSUser?
+    var currentSheet: PSSheet?
     
     var managedObjectContext: NSManagedObjectContext!
     var loadedFromPersistentStore: Bool = false
@@ -54,6 +57,8 @@ class PSDataController: NSObject {
                 if !userDefault.boolForKey(PSUserDefaultsNotFirstTimeKey) {
                     print("Prepare initializing first time user")
                     self.initializeFirstTimeUser()
+                } else {
+                    self.loadCurrentState()
                 }
                 
                 
@@ -72,8 +77,7 @@ class PSDataController: NSObject {
     
     func initializeFirstTimeUser() {
         let newUser = PSUser.newUser("Sample", email: "sample@email.com", save: false)
-        let newPersonalGroup = PSGroup.newGroup("Personal", owner: newUser, save: false)
-        newPersonalGroup.isPersonal = true
+        let newSheet = PSSheet.newSheet("My Shopping List", owner: newUser, save: false)
         
         do {
             try self.managedObjectContext.save()
@@ -81,9 +85,35 @@ class PSDataController: NSObject {
             fatalError("Failed to save context: \(error)")
         }
         
-        PSUser.cUser = newUser
-        PSGroup.pGroup = newPersonalGroup
+        self.currentUser = newUser
+        self.currentSheet = newSheet
+        self.saveCurrentState()
+    }
+    
+    func loadCurrentState() {
+        let userID = NSUserDefaults.standardUserDefaults().URLForKey(PSUserDefaultsCurrentUserKey)
+        let sheetID = NSUserDefaults.standardUserDefaults().URLForKey(PSUserDefaultsCurrentSheetKey)
+        print("Retrieve current user: \(userID)")
+        let moc = self.managedObjectContext
+        
+        if let uid = userID, let sid = sheetID {
+            let uObjectID = moc.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(uid)
+            let sObjectID = moc.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(sid)
+            
+            if let uObId = uObjectID, let sObId = sObjectID {
+                self.currentUser = moc.objectWithID(uObId) as? PSUser
+                self.currentSheet = moc.objectWithID(sObId) as? PSSheet
+            }
+        }
+    }
+    
+    func saveCurrentState() {
+        let userID = self.currentUser?.objectID.URIRepresentation()
+        let sheetID = self.currentSheet?.objectID.URIRepresentation()
+        
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: PSUserDefaultsNotFirstTimeKey)
-        NSUserDefaults.standardUserDefaults().setObject(newUser.email, forKey: PSUserDefaultsCurrentUserKey)
+        NSUserDefaults.standardUserDefaults().setURL(userID, forKey: PSUserDefaultsCurrentUserKey)
+        NSUserDefaults.standardUserDefaults().setURL(sheetID, forKey: PSUserDefaultsCurrentSheetKey)
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 }

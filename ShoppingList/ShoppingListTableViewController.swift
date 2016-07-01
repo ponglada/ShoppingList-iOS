@@ -12,7 +12,7 @@ import CoreData
 class ShoppingListTableViewController: UITableViewController, UITextFieldDelegate, SWTableViewCellDelegate, ShoppinglistCellDelegate {
 
     var shoppingItems: [PSShoppingItem]!
-    var shoppingGroup: PSGroup!
+    var shoppingSheet: PSSheet!
     
     @IBOutlet weak var AddItemTextField: UITextField!
     
@@ -26,11 +26,14 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         
         let dc = PSDataController.sharedInstance
         if dc.loadedFromPersistentStore {
-            self.shoppingGroup = PSGroup.personalGroup()
-            self.shoppingItems = self.shoppingGroup.shoppingItems?.allObjects as! [PSShoppingItem]
+            self.shoppingSheet = PSDataController.sharedInstance.currentSheet
+            self.shoppingItems = self.shoppingSheet.shoppingItems?.allObjects as! [PSShoppingItem]
+            self.navigationItem.title = self.shoppingSheet.name!
         } else {
             self.shoppingItems = []
+            self.navigationItem.title = ""
         }
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShoppingListTableViewController.dataReady), name: PSFinishedLoadingFromPersistentStore, object: nil)
     }
@@ -127,7 +130,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         let name: String = (textField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))!
         
         if name.characters.count > 0 {
-            let item = PSShoppingItem.newShoppingItem(textField.text!, inGroup: self.shoppingGroup, save: true)
+            let item = PSShoppingItem.newShoppingItem(textField.text!, inSheet: self.shoppingSheet, save: true)
             self.shoppingItems.append(item)
             textField.text = ""
             
@@ -212,8 +215,9 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
     // MARK: - Observer
     
     func dataReady() {
-        self.shoppingGroup = PSGroup.personalGroup()
-        self.shoppingItems = self.shoppingGroup.shoppingItems?.allObjects as! [PSShoppingItem]
+        self.shoppingSheet = PSDataController.sharedInstance.currentSheet
+        self.shoppingItems = self.shoppingSheet.shoppingItems?.allObjects as! [PSShoppingItem]
+        self.navigationItem.title = self.shoppingSheet.name!
         self.tableView.reloadData()
     }
 
