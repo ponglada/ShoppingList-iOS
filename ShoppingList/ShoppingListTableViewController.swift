@@ -20,7 +20,6 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         case Edit = 0, Delete
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,10 +27,10 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
         if dc.loadedFromPersistentStore {
             self.shoppingSheet = PSDataController.sharedInstance.currentSheet
             self.shoppingItems = self.shoppingSheet.shoppingItems?.allObjects as! [PSShoppingItem]
-            self.navigationItem.title = self.shoppingSheet.name!
+            self.tabBarController!.navigationItem.title = self.shoppingSheet.name!
         } else {
             self.shoppingItems = []
-            self.navigationItem.title = ""
+            self.tabBarController!.navigationItem.title = ""
         }
         
         
@@ -217,7 +216,7 @@ class ShoppingListTableViewController: UITableViewController, UITextFieldDelegat
     func dataReady() {
         self.shoppingSheet = PSDataController.sharedInstance.currentSheet
         self.shoppingItems = self.shoppingSheet.shoppingItems?.allObjects as! [PSShoppingItem]
-        self.navigationItem.title = self.shoppingSheet.name!
+        self.tabBarController!.navigationItem.title = self.shoppingSheet.name!
         self.tableView.reloadData()
     }
 

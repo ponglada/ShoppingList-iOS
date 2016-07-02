@@ -30,6 +30,7 @@
 		E0F2BEBF1D1DF3DF00B5E7C2 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEB91D1DF3DF00B5E7C2 /* SWUtilityButtonView.m */; };
 		E0F2BEC21D25EFFD00B5E7C2 /* PSSheet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEC01D25EFFD00B5E7C2 /* PSSheet+CoreDataProperties.swift */; };
 		E0F2BEC31D25EFFD00B5E7C2 /* PSSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEC11D25EFFD00B5E7C2 /* PSSheet.swift */; };
+		E0F2BEC51D260B4900B5E7C2 /* PSSheetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEC41D260B4900B5E7C2 /* PSSheetTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E0F2BEB91D1DF3DF00B5E7C2 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		E0F2BEC01D25EFFD00B5E7C2 /* PSSheet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PSSheet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0F2BEC11D25EFFD00B5E7C2 /* PSSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSSheet.swift; sourceTree = "<group>"; };
+		E0F2BEC41D260B4900B5E7C2 /* PSSheetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSSheetTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E0248ACB1D174B1600FBC6F0 /* Assets.xcassets */,
 				E0248AD01D174B1600FBC6F0 /* Info.plist */,
 				E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */,
+				E0F2BEC41D260B4900B5E7C2 /* PSSheetTableViewController.swift */,
 				E0248AEE1D19C17B00FBC6F0 /* MainModel.xcdatamodeld */,
 				E0248AEC1D19C10000FBC6F0 /* View */,
 				E0248AED1D19C12900FBC6F0 /* Model */,
@@ -294,6 +297,7 @@
 				E0248AC31D174B1600FBC6F0 /* AppDelegate.swift in Sources */,
 				E0248B041D1A06BF00FBC6F0 /* PSUser.swift in Sources */,
 				E0248AF21D19EED500FBC6F0 /* PSDataController.swift in Sources */,
+				E0F2BEC51D260B4900B5E7C2 /* PSSheetTableViewController.swift in Sources */,
 				E0248AE91D17534F00FBC6F0 /* ShoppingListCell.swift in Sources */,
 				E0F2BEBC1D1DF3DF00B5E7C2 /* SWLongPressGestureRecognizer.m in Sources */,
 				E0F2BEBD1D1DF3DF00B5E7C2 /* SWTableViewCell.m in Sources */,
