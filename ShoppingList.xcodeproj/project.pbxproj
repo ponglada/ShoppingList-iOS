@@ -31,6 +31,7 @@
 		E0F2BEC21D25EFFD00B5E7C2 /* PSSheet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEC01D25EFFD00B5E7C2 /* PSSheet+CoreDataProperties.swift */; };
 		E0F2BEC31D25EFFD00B5E7C2 /* PSSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEC11D25EFFD00B5E7C2 /* PSSheet.swift */; };
 		E0F2BEC51D260B4900B5E7C2 /* PSSheetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEC41D260B4900B5E7C2 /* PSSheetTableViewController.swift */; };
+		E0F2BEC71D278D2D00B5E7C2 /* PSAddSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2BEC61D278D2C00B5E7C2 /* PSAddSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E0F2BEC01D25EFFD00B5E7C2 /* PSSheet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PSSheet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0F2BEC11D25EFFD00B5E7C2 /* PSSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSSheet.swift; sourceTree = "<group>"; };
 		E0F2BEC41D260B4900B5E7C2 /* PSSheetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSSheetTableViewController.swift; sourceTree = "<group>"; };
+		E0F2BEC61D278D2C00B5E7C2 /* PSAddSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSAddSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				E0248AD01D174B1600FBC6F0 /* Info.plist */,
 				E0248AE41D174E2800FBC6F0 /* ShoppingListTableViewController.swift */,
 				E0F2BEC41D260B4900B5E7C2 /* PSSheetTableViewController.swift */,
+				E0F2BEC61D278D2C00B5E7C2 /* PSAddSheetViewController.swift */,
 				E0248AEE1D19C17B00FBC6F0 /* MainModel.xcdatamodeld */,
 				E0248AEC1D19C10000FBC6F0 /* View */,
 				E0248AED1D19C12900FBC6F0 /* Model */,
@@ -303,6 +306,7 @@
 				E0F2BEBD1D1DF3DF00B5E7C2 /* SWTableViewCell.m in Sources */,
 				E0248B031D1A06BF00FBC6F0 /* PSUser+CoreDataProperties.swift in Sources */,
 				E0F2BEC21D25EFFD00B5E7C2 /* PSSheet+CoreDataProperties.swift in Sources */,
+				E0F2BEC71D278D2D00B5E7C2 /* PSAddSheetViewController.swift in Sources */,
 				E0F2BEBA1D1DF3DF00B5E7C2 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				E0F2BEBF1D1DF3DF00B5E7C2 /* SWUtilityButtonView.m in Sources */,
 				E0F2BEBB1D1DF3DF00B5E7C2 /* SWCellScrollView.m in Sources */,

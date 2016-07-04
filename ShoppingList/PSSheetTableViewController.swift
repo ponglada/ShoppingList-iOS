@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PSSheetTableViewController: UITableViewController {
+class PSSheetTableViewController: UITableViewController, PSAddSheetDelegate {
     
     var sheets: [PSSheet]!
 
@@ -42,13 +42,17 @@ class PSSheetTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sheets.count
+        return self.sheets.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == self.sheets.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier("AddSheetCell", forIndexPath: indexPath)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("SheetCell", forIndexPath: indexPath)
 
-        // Configure the cell...
         let sheet = self.sheets[indexPath.row]
         cell.textLabel?.text = sheet.name
         return cell
@@ -101,7 +105,26 @@ class PSSheetTableViewController: UITableViewController {
             PSDataController.sharedInstance.currentSheet = selectedSheet
             PSDataController.sharedInstance.saveCurrentState()
         
+        } else if segue.identifier == "AddSheet" {
+            let navCon = segue.destinationViewController as! UINavigationController
+            let desCon = navCon.topViewController as! PSAddSheetViewController
+            desCon.delegate = self
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "ShowShoppingList" {
+            let selectedCell = sender as! UITableViewCell
+            let indexPath = self.tableView.indexPathForCell(selectedCell)
+            return indexPath?.row < self.sheets.count
+        }
+        
+        return true
+    }
+    
+    // MARK: - Unwind
+    @IBAction func cancelAddingSheet(_: UIStoryboardSegue) {
+        
     }
     
     
@@ -111,6 +134,14 @@ class PSSheetTableViewController: UITableViewController {
     func dataReady() {
         self.sheets = PSSheet.allSheets()
         self.tableView.reloadData()
+    }
+    
+    
+    // MARK: - PSAddSheetDelegate
+    func addSheetController(controller: PSAddSheetViewController, didAddedNewSheet sheet: PSSheet) {
+        self.sheets.append(sheet)
+        let indexPath = NSIndexPath(forRow: self.sheets.count - 1, inSection: 0)
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
     }
 
 }
